@@ -3,16 +3,16 @@ import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Contato } from './contato';
+import { Atleta } from './atleta';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContatoService {
+export class AtletaService {
 
-  private resource = 'contato';
-  api = environment.urlBase+'/api/'+this.resource;
+  private resource = 'atleta';
+  api = environment.urlBase+'/'+this.resource;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,37 +22,37 @@ export class ContatoService {
   }
 
   // Obtem todos os agenda
-  getContatos(): Observable<Contato[]> {
+  getAtletas(): Observable<Atleta[]> {
     console.log(this.api);
-    return this.httpClient.get<Contato[]>(this.api)
+    return this.httpClient.get<Atleta[]>(this.api)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
     // Obtem todos os agenda
-    getContatoByID(valor:number): Observable<Contato> {
+    getAtletaByID(valor:number): Observable<Atleta> {
       console.log(this.api);
-      return this.httpClient.get<Contato>(this.api+'/'+valor)
+      return this.httpClient.get<Atleta>(this.api+'/'+valor)
         .pipe(
           retry(2),
           catchError(this.handleError))
     }
 
     // salva um Contato
-    saveContato(contato: Contato): Observable<Contato> {
+    saveAtleta(atleta: Atleta): Observable<Atleta> {
       console.log(this.api);
-      console.log( JSON.stringify(contato));
-      return this.httpClient.post<Contato>(this.api, JSON.stringify(contato), this.httpOptions)
+      console.log( JSON.stringify(atleta));
+      return this.httpClient.post<Atleta>(this.api, JSON.stringify(atleta), this.httpOptions)
         .pipe(
           retry(2),
           catchError(this.handleError)
         )
     }
-  
 
-  createContato() {
-    return this.httpClient.get<Contato>(this.api )
+
+  createAtleta() {
+    return this.httpClient.get<Atleta>(this.api )
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -60,7 +60,7 @@ export class ContatoService {
   }
 
 
-  
+
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

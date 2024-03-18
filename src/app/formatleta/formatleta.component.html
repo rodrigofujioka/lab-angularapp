@@ -1,0 +1,45 @@
+<form (ngSubmit)="saveAtleta(f)" #f="ngForm">
+
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" [(ngModel)]="atleta.nome" id="nome" name="nome" #name="ngModel" required class="form-control"
+        placeholder="Digite a Nome"  [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" >
+
+    </div>
+    <div>
+        <label for="Esporte">Esporte:</label>
+        <input type="text" [(ngModel)]="atleta.esporte" id="esporte" name="esporte" #accountNumber="ngModel" required class="form-control"  >
+
+    </div>
+    <div>
+        <button type="submit" [disabled]="f.form.invalid">Cadastrar</button>
+    </div>
+</form>
+
+
+
+<div class="container">
+
+
+    <button class="btn btn-warning btn-sm ml-1" (click)="getAtletas()" type="button">Listar Todos</button>
+
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">nome</th>
+              <th scope="col">Esporte</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let atleta of atletas">
+              <td>{{atleta.id}}</td>
+              <td>{{atleta.name}}</td>
+              <td>{{atleta.esporte}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
