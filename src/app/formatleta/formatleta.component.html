@@ -12,6 +12,13 @@
 
     </div>
     <div>
+      <label for="Esporte">Email:</label>
+      <input type="text" [(ngModel)]="atleta.email" id="email" name="email" #accountNumber="ngModel" >
+
+  </div>
+
+
+    <div>
         <button type="submit" [disabled]="f.form.invalid">Cadastrar</button>
     </div>
 </form>
@@ -30,14 +37,16 @@
               <th scope="col">Id</th>
               <th scope="col">nome</th>
               <th scope="col">Esporte</th>
+              <th scope="col">E-mail</th>
 
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let atleta of atletas">
               <td>{{atleta.id}}</td>
-              <td>{{atleta.name}}</td>
+              <td>{{atleta.nome}}</td>
               <td>{{atleta.esporte}}</td>
+              <td>{{atleta.e-mail}}</td>
             </tr>
           </tbody>
         </table>
