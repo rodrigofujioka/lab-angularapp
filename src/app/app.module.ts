@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FormatletaComponent} from './formatleta/formatleta.component';
+import { FormaAlunoComponent } from './forma-aluno/forma-aluno.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormatletaComponent
+    FormatletaComponent,
+    FormaAlunoComponent
   ],
   imports: [
     BrowserModule,

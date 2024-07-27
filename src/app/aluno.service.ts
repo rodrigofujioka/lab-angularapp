@@ -31,7 +31,7 @@ export class AlunoService {
   }
 
     // Obtem todos os agenda
-    getAtletaByID(valor:number): Observable<Aluno> {
+    getAlunoByID(valor:number): Observable<Aluno> {
       console.log(this.api);
       return this.httpClient.get<Aluno>(this.api+'/'+valor)
         .pipe(
@@ -40,7 +40,7 @@ export class AlunoService {
     }
 
     // salva um Contato
-    saveAtleta(aluno: Aluno): Observable<Aluno> {
+    saveAluno(aluno: Aluno): Observable<Aluno> {
       console.log(this.api);
       console.log( JSON.stringify(aluno));
       return this.httpClient.post<Aluno>(this.api, JSON.stringify(aluno), this.httpOptions)
@@ -52,7 +52,7 @@ export class AlunoService {
 
 
   createAtleta() {
-    return this.httpClient.get<Atleta>(this.api )
+    return this.httpClient.get<Aluno>(this.api )
       .pipe(
         retry(1),
         catchError(this.handleError)
